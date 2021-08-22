@@ -8,7 +8,7 @@
     <meta name="keywords" content="#">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="#">
-    <title>Quickmunch | Food Delivery Hub</title>
+    <title>Barcelos</title>
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="#">
   <meta name="description" content="#">
-  <title>Quickmunch | Login</title>
+  <title>Barcelos | Login</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
@@ -46,7 +46,7 @@
           <div class="main-banner">
             <img src="assets/img/banner/banner-1.jpg" class="img-fluid full-width main-img" alt="banner">
             <div class="overlay-2 main-padding">
-              <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
+              <img src="/backend/assets/images/logo.png" style="width: 40%" class="img-fluid" alt="logo">
             </div>
             <img src="assets/img/banner/burger.png" class="footer-img" alt="footer-img">
           </div>
@@ -86,25 +86,15 @@
                                             <label class="custom-checkbox mb-0">
                                             <input type="checkbox" name="#"> <span class="checkmark"></span> {{ __('Remember Me') }}</label>
                                             @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                <a href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
                                             @endif
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn-second btn-submit full-width">
-                                            <img src="/assets/img/M.png" alt="btn logo">Sign in</button>
-                                        </div>
-                                        <div class="form-group text-center">
-                                            <span>or</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn-second btn-facebook full-width">
-                                            <img src="/assets/img/facebook-logo.svg" alt="btn logo">Continue with Facebook</button>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn-second btn-google full-width">
-                                            <img src="/assets/img/google-logo.png" alt="btn logo">Continue with Google</button>
+                                                Login
+                                            </button>
                                         </div>
                                         <div class="form-group text-center mb-0">
                                             <a href="{{ route("register") }}">Create your account</a>

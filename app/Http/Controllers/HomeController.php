@@ -17,9 +17,6 @@ class HomeController extends Controller
     public function __construct()
     {
 
-        if (!Auth::user()->hasRole("Super Admin")) {
-            return redirect('home')->with(denied());
-        }
     }
 
     /**
@@ -29,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $categories = Categorie::all();
         $articles = Article::orderBy('id', 'desc')
             ->take(6)
@@ -39,6 +35,10 @@ class HomeController extends Controller
 
     public function admin()
     {
+        if (!Auth::user()->hasRole("Super Admin")) {
+            return redirect('home');
+        }
+
         return view("home");
     }
 

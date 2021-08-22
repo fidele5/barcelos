@@ -33,7 +33,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="mr-2"><span class="text-orange display-5"><i class="mdi mdi-wallet"></i></span></div>
                                             <div><span class="text-muted">Net Profit</span>
-                                                <h3 class="font-medium mb-0">$3,567.53</h3>
+                                                <h3 class="font-medium mb-0">${{ getNetProfit() }}</h3>
                                             </div>
                                         </div>
                                     </div>

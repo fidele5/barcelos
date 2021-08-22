@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Article;
 use App\Models\Cart;
 use App\Models\Client;
 use App\Models\Commande;
@@ -103,4 +104,29 @@ function getRoutePath()
     $current = Route::currentRouteName();
     $link = explode(".", $current);
     return ucfirst($link[0]);
+}
+
+function getNetProfit()
+{
+    $commandes = Commande::where("status", false)->get();
+    $articles = Article::all();
+    if (count($commandes) == 0) {
+        return 0;
+    } else {
+        $sells = $commandes->sum(function ($commande) {
+            return $commande->articles->sum(function ($item) {
+                return $item->price * $item->pivot->quantity;
+            });
+        });
+        $purchases = $articles->sum('price');
+
+        return $sells - $purchases;
+    }
+
+}
+
+function getLocation()
+{
+    $locations = Location::all();
+    return $locations[0];
 }

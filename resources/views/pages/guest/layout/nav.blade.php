@@ -17,7 +17,7 @@
                                     <!-- location picker -->
                                     <div class="col-lg-6 col-md-5">
                                         <a href="#" class="delivery-add p-relative"> <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                            <span class="address">Brooklyn, NY</span>
+                                            <span class="address">{{ getLocation()->designation }}</span>
                                         </a>
                                         <div class="location-picker">
                                             <input type="text" class="form-control" placeholder="Enter a new address">

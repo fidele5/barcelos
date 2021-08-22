@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="#">
   <meta name="description" content="#">
-  <title>Quickmunch | Register</title>
+  <title>Barcelos | Register</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
@@ -46,7 +46,7 @@
                     <div class="main-banner">
                         <img src="/assets/img/banner/banner-1.jpg" class="img-fluid full-width main-img" alt="banner">
                         <div class="overlay-2 main-padding">
-                            <img src="/assets/img/logo-2.jpg" class="img-fluid" alt="logo">
+                            <img src="/backend/assets/images/logo.png" style="width: 40%" class="img-fluid" alt="logo">
                         </div>
                         <img src="/assets/img/banner/burger.png" class="footer-img" alt="footer-img">
                     </div>

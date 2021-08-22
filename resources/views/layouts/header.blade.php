@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/backend/assets/images/favicon.png">
-    <title>Ristorante Admin</title>
+    <title>Barcelos Admin</title>
     <link href="/backend/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="/backend/assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="/backend/assets/extra-libs/toastr/dist/build/toastr.min.css" rel="stylesheet">

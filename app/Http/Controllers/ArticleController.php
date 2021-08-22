@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Categorie;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -28,7 +29,7 @@ class ArticleController extends Controller
     public function create()
     {
         if (!Auth::user()->can('manage_product')) {
-            return redirect('home')->with(denied());
+            return redirect('home');
         } // end permission checking
 
         $categories = Categorie::all();
@@ -45,7 +46,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         if (!Auth::user()->can('manage_product')) {
-            return redirect('home')->with(denied());
+            return redirect('home');
         } // end permission checking
 
         if ($request->hasFile("thumbnails")) {
@@ -97,7 +98,7 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         if (!Auth::user()->can('manage_product')) {
-            return redirect('home')->with(denied());
+            return redirect('home');
         } // end permission checking
 
         $categories = Categorie::all();
@@ -115,7 +116,7 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         if (!Auth::user()->can('manage_product')) {
-            return redirect('home')->with(denied());
+            return redirect('home');
         } // end permission checking
 
         if ($request->has("thumbnails")) {
@@ -157,7 +158,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         if (!Auth::user()->can('manage_product')) {
-            return redirect('home')->with(denied());
+            return redirect('home');
         } // end permission checking
 
         $article = $article->delete();
