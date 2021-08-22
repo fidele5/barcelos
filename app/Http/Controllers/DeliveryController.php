@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class DeliveryController extends Controller
 {
+
+    public function __construct()
+    {
+        if (!Auth::user()->can('manage_supplier')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
+    }
     /**
      * Display a listing of the resource.
      *

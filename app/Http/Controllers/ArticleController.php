@@ -27,6 +27,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->can('manage_product')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         $categories = Categorie::all();
         $locations = Location::all();
         return view("pages.backend.articles.create")->with(compact("categories", "locations"));
@@ -40,6 +44,10 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->can('manage_product')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         if ($request->hasFile("thumbnails")) {
             $val = $request->thumbnails->move('backend/assets/images/product/', time() . '.' . $request->thumbnails->extension());
         } else {
@@ -88,6 +96,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        if (!Auth::user()->can('manage_product')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         $categories = Categorie::all();
         $locations = Location::all();
         return view("pages.backend.articles.edit")->with(compact("article", "categories", "locations"));
@@ -102,6 +114,10 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        if (!Auth::user()->can('manage_product')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         if ($request->has("thumbnails")) {
             $val = $request->thumbnails->move('backend/assets/images/product/', time() . '.' . $request->thumbnails->extension());
         } else {
@@ -140,6 +156,10 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        if (!Auth::user()->can('manage_product')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         $article = $article->delete();
         if ($article) {
             return response()->json([

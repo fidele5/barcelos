@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Cart;
 use App\Models\Categorie;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,9 @@ class HomeController extends Controller
     public function __construct()
     {
 
+        if (!Auth::user()->hasRole("Super Admin")) {
+            return redirect('home')->with(denied());
+        }
     }
 
     /**

@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        if (!Auth::user()->can('manage_user')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
+    }
+
     /**
      * Display a listing of the resource.
      *

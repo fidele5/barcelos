@@ -136,6 +136,10 @@ class CommandeController extends Controller
      */
     public function destroy(Commande $commande)
     {
+        if (!Auth::user()->can('manage_category')) {
+            return redirect('home')->with(denied());
+        } // end permission checking
+
         $commande = $commande->delete();
         if ($commande) {
             return response()->json([
