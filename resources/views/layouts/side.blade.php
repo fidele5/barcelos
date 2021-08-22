@@ -33,31 +33,42 @@
                         <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">Personal</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="/" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard </span></a></li>
                         <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">Apps</span></li>
+                        @can("manage_todo")
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("message.index") }}" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Invoice</span></a></li>
+                        @endcan
+                        @can("manage_category")
+                            <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span class="hide-menu">Settings </span></a>
+                                <ul aria-expanded="false" class="collapse  first-level">
+                                    <li class="sidebar-item"><a href="{{ route("categorie.index") }}" class="sidebar-link"><i class="mdi mdi-comment-processing-outline"></i><span class="hide-menu"> Categories</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ route("location.index") }}" class="sidebar-link"><i class="mdi mdi-calendar"></i><span class="hide-menu"> Locations  </span></a></li>
+                                </ul>
+                            </li>
+                        @endcan
 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("message.index") }}" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Invoice</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span class="hide-menu">Settings </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="{{ route("categorie.index") }}" class="sidebar-link"><i class="mdi mdi-comment-processing-outline"></i><span class="hide-menu"> Categories</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("location.index") }}" class="sidebar-link"><i class="mdi mdi-calendar"></i><span class="hide-menu"> Locations  </span></a></li>
-                            </ul>
-                        </li>
 
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span class="hide-menu">Ecommerce Pages</span></a>
                             <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item"><a href="{{ route("article.index") }}" class="sidebar-link"><i class="mdi mdi-cards-variant"></i> <span class="hide-menu">Products</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("commande.index") }}" class="sidebar-link"><i class="mdi mdi-chart-pie"></i> <span class="hide-menu">Product Orders</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("delivery.index") }}" class="sidebar-link"><i class="mdi mdi-clipboard-check"></i> <span class="hide-menu">Delivery</span></a></li>
+                                @canany(["manage_product", "manage_sell_invoice", "create_sell_invoice", "manage_supplier_payment"])
+                                    <li class="sidebar-item"><a href="{{ route("article.index") }}" class="sidebar-link"><i class="mdi mdi-cards-variant"></i> <span class="hide-menu">Products</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ route("commande.index") }}" class="sidebar-link"><i class="mdi mdi-chart-pie"></i> <span class="hide-menu">Product Orders</span></a></li>
+                                @endcan
+                                @can("manage_requisition")
+                                    <li class="sidebar-item"><a href="{{ route("delivery.index") }}" class="sidebar-link"><i class="mdi mdi-clipboard-check"></i> <span class="hide-menu">Delivery</span></a></li>
+                                @endcan
+
                             </ul>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span class="hide-menu">Users</span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item"><a href="{{ route("user.index") }}" class="sidebar-link"><i class="mdi mdi-account-box"></i> <span class="hide-menu"> Users </span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("client.index") }}" class="sidebar-link"><i class="mdi mdi-account-network"></i><span class="hide-menu"> Clients</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("roles.index") }}" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> Roles</span></a></li>
-                                <li class="sidebar-item"><a href="{{ route("permissions") }}" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> Permissions</span></a></li>
-                            </ul>
-                        </li>
+                        @canany(["manage_user", "application_setting"])
+                            <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span class="hide-menu">Users</span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item"><a href="{{ route("user.index") }}" class="sidebar-link"><i class="mdi mdi-account-box"></i> <span class="hide-menu"> Users </span></a></li>
+                                    <li class="sidebar-item"><a href="{{ route("client.index") }}" class="sidebar-link"><i class="mdi mdi-account-network"></i><span class="hide-menu"> Clients</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ route("roles.index") }}" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> Roles</span></a></li>
+                                    <li class="sidebar-item"><a href="{{ route("permissions") }}" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> Permissions</span></a></li>
+                                </ul>
+                            </li>
+                        @endcan
                         <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">Extra</span></li>
 
                         <li class="sidebar-item">
