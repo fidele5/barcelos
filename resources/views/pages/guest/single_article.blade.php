@@ -91,7 +91,7 @@
                                     <div class="product-box">
                                         <div class="product-img">
                                             <a href="{{ route("article.show", $related) }}">
-                                                <img src="/assets/img/restaurants/255x150/shop-24.jpg" class="img-fluid full-width" alt="product-img">
+                                                <img src="/{{ $article->thumbnails }}" class="img-fluid full-width" alt="product-img">
                                             </a>
                                         </div>
                                         <div class="product-caption">
