@@ -35,7 +35,7 @@ function get_locations()
 
 function getTotalSells()
 {
-    $commandes = Commande::where("status", false)->get();
+    $commandes = Commande::where("status", true)->get();
     if (count($commandes) == 0) {
         return 0;
     } else {
@@ -49,7 +49,7 @@ function getTotalSells()
 
 function getMonthlySells()
 {
-    $commandes = Commande::where("status", false)
+    $commandes = Commande::where("status", true)
         ->whereMonth('created_at', date('m'))
         ->whereYear('created_at', date('Y'))
         ->get();
@@ -58,7 +58,7 @@ function getMonthlySells()
 
 function getSoldArticles()
 {
-    return count(Commande::where("status", false)->get());
+    return count(Commande::where("status", true)->get());
 }
 
 function allCLients()
@@ -108,7 +108,7 @@ function getRoutePath()
 
 function getNetProfit()
 {
-    $commandes = Commande::where("status", false)->get();
+    $commandes = Commande::where("status", true)->get();
     $articles = Article::all();
     if (count($commandes) == 0) {
         return 0;

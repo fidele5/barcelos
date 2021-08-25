@@ -30,7 +30,7 @@
                                                     <td>
                                                         <div class="btn-group" role="group" aria-label="Button group">
                                                             <a href="{{ route("commande.show", $commande) }}" class="btn btn-outline-success">Show</a>
-
+                                                                
                                                                 <a data-toggle="modal" data-target="#createmodel{{ $commande->id }}" class="btn btn-outline-primary">Delivery</a>
 
                                                             <a href="{{ route("commande.destroy", $commande) }}" class="btn btn-outline-danger delete">Delete</a>

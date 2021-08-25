@@ -37,27 +37,19 @@
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("message.index") }}" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Invoice</span></a></li>
                         @endcan
                         @can("manage_category")
-                            <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span class="hide-menu">Settings </span></a>
-                                <ul aria-expanded="false" class="collapse  first-level">
-                                    <li class="sidebar-item"><a href="{{ route("categorie.index") }}" class="sidebar-link"><i class="mdi mdi-comment-processing-outline"></i><span class="hide-menu"> Categories</span></a></li>
-                                    <li class="sidebar-item"><a href="{{ route("location.index") }}" class="sidebar-link"><i class="mdi mdi-calendar"></i><span class="hide-menu"> Locations  </span></a></li>
-                                </ul>
-                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("categorie.index") }}" class="sidebar-link"><i class="mdi mdi-comment-processing-outline"></i><span class="hide-menu"> Categories</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("location.index") }}" class="sidebar-link"><i class="mdi mdi-calendar"></i><span class="hide-menu"> Locations  </span></a></li>
                         @endcan
 
-
+                        @canany(["manage_product", "manage_sell_invoice", "create_sell_invoice", "manage_supplier_payment", "manage_requisition"])
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span class="hide-menu">Ecommerce Pages</span></a>
                             <ul aria-expanded="false" class="collapse first-level">
-                                @canany(["manage_product", "manage_sell_invoice", "create_sell_invoice", "manage_supplier_payment"])
-                                    <li class="sidebar-item"><a href="{{ route("article.index") }}" class="sidebar-link"><i class="mdi mdi-cards-variant"></i> <span class="hide-menu">Products</span></a></li>
-                                    <li class="sidebar-item"><a href="{{ route("commande.index") }}" class="sidebar-link"><i class="mdi mdi-chart-pie"></i> <span class="hide-menu">Product Orders</span></a></li>
-                                @endcan
-                                @can("manage_requisition")
-                                    <li class="sidebar-item"><a href="{{ route("delivery.index") }}" class="sidebar-link"><i class="mdi mdi-clipboard-check"></i> <span class="hide-menu">Delivery</span></a></li>
-                                @endcan
-
+                                <li class="sidebar-item"><a href="{{ route("article.index") }}" class="sidebar-link"><i class="mdi mdi-cards-variant"></i> <span class="hide-menu">Products</span></a></li>
+                                <li class="sidebar-item"><a href="{{ route("commande.index") }}" class="sidebar-link"><i class="mdi mdi-chart-pie"></i> <span class="hide-menu">Product Orders</span></a></li>
+                                <li class="sidebar-item"><a href="{{ route("delivery.index") }}" class="sidebar-link"><i class="mdi mdi-clipboard-check"></i> <span class="hide-menu">Delivery</span></a></li>
                             </ul>
                         </li>
+                        @endcan
 
                         @canany(["manage_user", "application_setting"])
                             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span class="hide-menu">Users</span></a>

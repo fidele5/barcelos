@@ -89,9 +89,9 @@
                 bindto: '.statuses',
                 data: {
                     columns: [
-                        ['Success', getSuccesCmd(true)],
-                        ['Pending', getSuccesCmd(false)],
-                        ['Failed', getSuccesCmd(false)]
+                        ['Success', {{ getSuccesCmd(true) }}],
+                        ['Pending',{{ getSuccesCmd(false)}}],
+                        ['Failed', {{ getSuccesCmd(false) }}]
                     ],
 
                     type : 'donut'

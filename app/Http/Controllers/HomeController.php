@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Cart;
 use App\Models\Categorie;
+use App\Models\Commande;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -53,5 +54,19 @@ class HomeController extends Controller
     {
         $articles = Cart::where("client_id", 1)->get();
         return view("pages.guest.checkout")->with("cart", $articles);
+    }
+
+    public function orders()
+    {
+        $orders = Commande::where("client_id", Auth::user()->client->id)->doesntHave("deliveries")->get();
+        return view("pages.guest.orders")->with("commandes", $orders);
+
+    }
+
+    public function pastOrders()
+    {
+        $orders = Commande::where("client_id", Auth::user()->client->id)->has("deliveries")->get();
+        return view("pages.guest.past_orders")->with("commandes", $orders);
+
     }
 }

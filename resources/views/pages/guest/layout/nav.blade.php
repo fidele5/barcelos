@@ -60,33 +60,19 @@
                                 <div class="user-dropdown">
                                     <ul>
                                         <li>
-                                            <a href="order-details.html">
+                                            <a href="{{ route("past") }}">
                                                 <div class="icon"><i class="flaticon-rewind"></i>
                                                 </div> <span class="details">Past Orders</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="order-details.html">
+                                            <a href="{{ route("orders") }}">
                                                 <div class="icon"><i class="flaticon-takeaway"></i>
                                                 </div> <span class="details">Upcoming Orders</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-breadbox"></i>
-                                                </div> <span class="details">Saved</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon"><i class="flaticon-user"></i>
-                                                </div> <span class="details">Account</span>
-                                            </a>
-                                        </li>
-
                                     </ul>
-                                    <div class="user-footer"> <span class="text-light-black">Not Jhon?</span>
+                                    <div class="user-footer"> <span class="text-light-black">Not {{ Auth::user()->name }}?</span>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __("pages.logout") }}</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf

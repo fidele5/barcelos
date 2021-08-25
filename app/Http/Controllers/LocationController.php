@@ -8,14 +8,6 @@ use Illuminate\Http\Request;
 class LocationController extends Controller
 {
 
-    public function __construct()
-    {
-        if (!Auth::user()->can('application_setting')) {
-            return redirect('home')->with(denied());
-        } // end permission checking
-
-    }
-
     /**
      * Display a listing of the resource.
      *

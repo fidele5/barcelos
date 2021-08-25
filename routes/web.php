@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/checkout", [HomeController::class, "checkout"])->name("checkout");
     Route::resource('paiement', PaiementController::class);
     Route::post("/paiement/authorize", [PaiementController::class, "authorized"]);
+    Route::get('/past-orders', [HomeController::class, "pastOrders"])->name("past");
+    Route::get('/orders', [HomeController::class, "orders"])->name("orders");
     //Route::get("/paiement/authorize", [PaiementController::class, "authorized"]);
 });
 

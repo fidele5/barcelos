@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Commande;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,7 @@ class CommandeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $datas = Cart::where("client_id", Auth::user()->client->id)->get();
         $commande = Commande::create([
@@ -112,7 +113,7 @@ class CommandeController extends Controller
      * @param  \App\Models\Commande  $commande
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Commande $commande)
+    public function update(Request $request, Commande $commande): JsonResponse
     {
         $commande = $commande->update($request->except("_token"));
         if ($commande) {
@@ -134,7 +135,7 @@ class CommandeController extends Controller
      * @param  \App\Models\Commande  $commande
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Commande $commande)
+    public function destroy(Commande $commande): JsonResponse
     {
         if (!Auth::user()->can('manage_category')) {
             return redirect('home')->with(denied());

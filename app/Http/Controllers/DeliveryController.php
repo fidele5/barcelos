@@ -10,13 +10,6 @@ use Illuminate\Http\Request;
 class DeliveryController extends Controller
 {
 
-    public function __construct()
-    {
-        if (!Auth::user()->can('manage_supplier')) {
-            return redirect('home')->with(denied());
-        } // end permission checking
-
-    }
     /**
      * Display a listing of the resource.
      *
@@ -42,14 +35,14 @@ class DeliveryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
         $commande = Commande::find($request->commande_id);
         $delivery = Delivery::create([
             "command_id" => $commande->id,
-            "from_adress" => "ici",
+            "from_adress" => getLocation(),
             "to_adress" => $commande->client->adresse,
             "user_id" => $request->user_id,
             "sent_at" => Carbon::now()->toDateTimeString(),
@@ -57,12 +50,12 @@ class DeliveryController extends Controller
         if ($delivery) {
             return response()->json([
                 "status" => "success",
-                "back" => "../",
+                "back" => "../commande",
             ]);
         } else {
             return response()->json([
                 "status" => "failure",
-                "back" => "../",
+                "back" => "../commande",
             ], 500);
         }
     }

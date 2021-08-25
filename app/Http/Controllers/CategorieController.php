@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 class CategorieController extends Controller
 {
 
-    public function __construct()
-    {
-        if (!Auth::user()->can('manage_category')) {
-            return redirect('home')->with(denied());
-        } // end permission checking
-    }
-
     /**
      * Display a listing of the resource.
      *

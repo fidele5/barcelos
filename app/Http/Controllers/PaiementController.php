@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PayPalPayment;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PaiementController extends Controller
 {
@@ -25,7 +26,7 @@ class PaiementController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create()
     {
@@ -148,14 +149,7 @@ class PaiementController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    public function authorized(Request $request)
+    public function authorized(Request $request): JsonResponse
     {
         $payer = new PayPalPayment();
         $payer->setSandboxMode(1);
@@ -172,7 +166,7 @@ class PaiementController extends Controller
             ]);
 
             if ($paypal_response->state == "approved") {
-                $paiement->commande->update([
+                Commande::find($paiement->command_id)->update([
                     "status" => true,
                 ]);
                 return response()->json([
@@ -188,8 +182,6 @@ class PaiementController extends Controller
             }
 
         }
-
-        return $request;
     }
 
     /**

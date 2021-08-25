@@ -41,7 +41,7 @@
                         <form action="{{ route("cart.store") }}" method="post">
                             @csrf
                             <div class="input-group">
-                                <input class="form-control col-3" type="number" name="quantity" placeholder="Quantity">
+                                <input class="form-control col-3" type="number" name="quantity" placeholder="Quantity" required>
                             </div>
                             <input type="hidden" name="article_id" value="{{ $article->id }}">
                             <button class="btn btn-cycan mt-2 text-white"><i class="fa fa-cart-plus text-white" aria-hidden="true"></i> Add to cart</button>

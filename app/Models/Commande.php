@@ -10,7 +10,7 @@ class Commande extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "client_id", "comment",
+        "client_id", "comment", "status",
     ];
 
     public function client()
@@ -30,7 +30,7 @@ class Commande extends Model
 
     public function deliveries()
     {
-        return $this->hasMany(Delivery::class);
+        return $this->hasMany(Delivery::class, 'command_id', 'id');
     }
 
 }
